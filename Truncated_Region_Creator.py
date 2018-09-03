@@ -16,11 +16,9 @@ args = parser.parse_args()
 #-----------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------
 
-
 def main_call(step, input1, output):
     data_read = pd.read_csv(input1, sep='\t')
     data_df = pd.DataFrame(data=data_read)
-
     region = ['Region', ]
     max_fst = ['Max_Fst', ]
     max_zscore = ['Max_Zscore', ]
@@ -29,7 +27,6 @@ def main_call(step, input1, output):
     start = ['Start', ]
     end = ['End', ]
     genes = ['Genes', ]
-
     win_len = []
 
     def getstartandstopandchrom():
@@ -58,8 +55,6 @@ def main_call(step, input1, output):
                     continue
                 elif (strt - curr) != step:       # sets end position
                     chrompos2 = data_df['Chromosome']
-                    # if "NW_" in chrompos2[place]:
-                    #     continue
                     throws = ['nan', 'NA', '']
                     if genelist in throws:
                         pass
@@ -106,7 +101,6 @@ def main_call(step, input1, output):
             genes.append(genelist)
         end.append(curr)
 
-
     def getfst_zscore(df):
         placehold = 0
         z_scr = df['Z-score']
@@ -116,19 +110,14 @@ def main_call(step, input1, output):
             temp2 = list(z_scr[placehold:placehold + ii])
             f_temp = list(f_val[placehold:placehold + ii])
             p_temp = list(pos1[placehold:placehold + ii])
-            # print(temp2)
-            # print(p_temp)
             top1 = 0.0
             position = 0
             fst = 0.0
             for jj in enumerate(temp2):
-                # print(jj)
                 if jj[1] > top1:
                     top1 = jj[1]
-                    # print(f_temp[jj[0]])
                     fst = f_temp[jj[0]]
                     position = p_temp[jj[0]]
-                    # print("done")
                 else:
                     continue
             max_zscore.append(top1)
@@ -136,36 +125,15 @@ def main_call(step, input1, output):
             max_pos.append(position)
             placehold += ii
 
-
-
-
-
     ### CALLS ###
     getstartandstopandchrom()
     getfst_zscore(data_df)
-    # nacheck()
-
     itertools.zip_longest(region, chrom, start, end, genes, max_fst, max_zscore, max_pos)
 
     with open(output, 'w') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerows(itertools.zip_longest(region, chrom, start, end, genes, max_fst, max_zscore, max_pos))
 
-    # with open(output, 'r') as cleanup:
-    #     with open(output, 'w') as final:
-    #         writer2 = csv.writer(final, delimiter='\t')
-    #         for line in cleanup:
-    #             if 'na' in line:
-    #                 continue
-    #             elif 'NA' in line:
-    #                 continue
-    #             elif 'nan' in line:
-    #                 continue
-    #             else:
-    #                 writer2.writerows(line)
-    # # print(win_len)
-
 
 if __name__ =='__main__':
     main_call(args.step, args.input, args.output)
-    # main_call(step, inputt, outt) # For Testing

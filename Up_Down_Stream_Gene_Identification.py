@@ -1,25 +1,9 @@
-# ----------------------------------------------------------------------------------------------------------------------
-
-'''
-
-Assumptions made:
-    1. Chromosome values are the same type (i.e NC_####.# or Contig/1-33...)
-    2. Reference file is in .gff formatting
-
-'''
-
-
-# ----------------------------------------------------------------------------------------------------------------------
-
 import pybedtools
 import pandas as pd
 import csv
 import itertools
 import argparse
 import time
-
-start_time = time.time()
-
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Argparse #
@@ -34,13 +18,8 @@ args = parser.parse_args()
 # ----------------------------------------------------------------------------------------------------------------------
 
 
-
-#names=['Chromosome', 'Feature', 'Type', 'Start', 'End', 'Score', 'Strand', 'Frame', 'Attribute']
-
-
 def main_call(input1, output1, ref1, thresh1):
     total_windows = 0
-
     gff_reader = pd.read_csv(ref1, sep='\t', engine='python', names=['Chromosome', 'Feature', 'Type', 'Start', 'End', 'Score', 'Strand', 'Frame', 'Attribute'])
     print(list(gff_reader))
     gff_dataframe = pd.DataFrame(data=gff_reader)
@@ -76,9 +55,7 @@ def main_call(input1, output1, ref1, thresh1):
         start_list = list(gff_dataframe_cut['Start'])
         stop_list = list(gff_dataframe_cut['End'])
         chromo_list = list(gff_dataframe_cut['Chromosome'])
-
         mastergenefile2 = []
-
         for val3 in range(0, len(gene_list)):
             temp = []
             tag = '##'
@@ -91,18 +68,11 @@ def main_call(input1, output1, ref1, thresh1):
                 continue
             else:
                 continue
-
-
-
         return mastergenefile2
 
     mastergenefile = mastergenelist() #variable for recursive calling
-
     x = pybedtools.example_bedtool(input1) #Open data bed file
-
     df = pd.read_table(x.fn, low_memory=False)
-    print(list(df))
-    print(df.head(10))
 
     def gatherinterest(pos, cutoff):
         '''
@@ -222,9 +192,7 @@ def main_call(input1, output1, ref1, thresh1):
             return upstream4[3]
         else:
             return 'INTERGENIC_REGION'
-
     thresh = float(thresh1)
-
     snp_of_interest = fststartstop(gatherinterest(df['Z-score'], thresh))
 # ----------------------------------------------------------------------------------------------------------------------
     ## Gathering all information for output file creation ##
@@ -275,8 +243,6 @@ def main_call(input1, output1, ref1, thresh1):
         writer = csv.writer(f, delimiter='\t')
         writer.writerows(itertools.zip_longest(Chromosome_final_list, Position_final_list, distance_downstream, downstream_final_list, within_final_list, upstream_final_list, dis_upstream, fst_final, z_score_final))
         f.close()
-        # print(time.time() - start_time)
-
     total_windows += len(Chromosome_final_list)
     return total_windows
 

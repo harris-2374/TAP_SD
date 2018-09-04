@@ -70,7 +70,7 @@ ________________________________________________________________________________
 	     - Threshold: (-t) (--threshold) – Minimum standard deviation to analyze. 
 
 	  Example:
-	    python3 Up Down Stream Gene Identification.py --input <pathway_to_fst_file> --output <pathway_to_output file.txt> --reference             <pathway_to_reference_file> --threshold <wanted_threshold>
+	    python3 Up Down Stream Gene Identification.py --input <pathway_to_fst_file> --output <pathway_to_output file.txt> --reference <pathway_to_reference_file> --threshold <wanted_threshold>
 
 	  Important Notes:
 	    - Ensure that the Chromosome names are identical to the names of the reference file. 
@@ -80,7 +80,7 @@ ________________________________________________________________________________
 
 	Truncated Region Creator:
 	  Summary:
-	    - Utilizing the output text file of Up_Down_Stream_Gene_Identification.py, the truncated region creator will produce a new tab              delimited file that contains regions of continuous window reads of Z-score data above the indicated threshold. This file is best used in Excel as an organization tool when beginning your analysis of genes of interest. 
+	    - Utilizing the output text file of Up_Down_Stream_Gene_Identification.py, the truncated region creator will produce a new tab delimited file that contains regions of continuous window reads of Z-score data above the indicated threshold. This file is best used in Excel as an organization tool when beginning your analysis of genes of interest. 
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) - (.txt) file created by Up_Down_Stream_Gene_Identification.py.
@@ -103,7 +103,7 @@ ________________________________________________________________________________
 	    - Region: (-r) (--region) – Pathway to truncated (.txt) region file created by Truncated_Region_Creator.py.
 
 	  Example:
-	    python3 Annotated_Variant_Separator.py --input <pathway_to_fst_file> --output <pathway_to_output_folder> --region                         <pathway_to_region_file>
+	    python3 Annotated_Variant_Separator.py --input <pathway_to_fst_file> --output <pathway_to_output_folder> --region <pathway_to_region_file>
 
 __________________________________________________________________________________________________________________________________________
 
@@ -112,7 +112,7 @@ Extra Scripts:
 
 	Genotype Expander:
 	  Summary:
-	    - The Genotype Expander takes vcf files with pooled genotypic data and separates the data into individual pseudo-samples. This               program is built to take in pooled data of any size, and any ploidy. 
+	    - The Genotype Expander takes vcf files with pooled genotypic data and separates the data into individual pseudo-samples. This program is built to take in pooled data of any size, and any ploidy. 
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) – Pathway to annotated .vcf file.
@@ -137,7 +137,7 @@ ________________________________________________________________________________
 	    - Chromosome: (-c) (--chromosome) – Indicate which chromosome(s) to produce. (i.e. ‘NC_009144.3’ for single chromosome, ‘NC_009144.3,NC_009154.3’for a list of chromosomes, or ‘all’ for all chromosomes)
 
 	  Example:
-	    python3 AlleleFrequency_Zscore_Interactive_Plot.py --input < pathway_to_fst_file > --frequency < pathway_to_pwc_file > --threshold <        Z_score_threshold_used > --chromosome < ‘all’, ‘NC_009144.3, NC_009154.3’, or ‘NC_009144.3’ >
+	    python3 AlleleFrequency_Zscore_Interactive_Plot.py --input < pathway_to_fst_file > --frequency < pathway_to_pwc_file > --threshold <Z_score_threshold_used > --chromosome < ‘all’, ‘NC_009144.3, NC_009154.3’, or ‘NC_009144.3’ >
 
 	  Important Notes:
 	    - This program loads one chromosome at a time, to continue to the next chromosome, you must close the current window. 

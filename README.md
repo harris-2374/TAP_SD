@@ -43,7 +43,7 @@ Running the Pipeline:
 
 	Fst Z-score transformer:
 	  Summary:
-	    - This program takes in the output .fst file, produced by Popoolation, and calculates transformed Z-scores for each Fst value. This         program also provides an interactive distribution plot, using Matplotlib. The distribution graph may be used to help determine the         threshold to use in the next step of the pipeline. 
+	    - This program takes in the output .fst file, produced by Popoolation, and calculates transformed Z-scores for each Fst value. It also provides an interactive distribution plot, using Matplotlib. The distribution graph may be used to help determine the threshold to use in the next step of the pipeline. 
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) - (.fst) file created by Popoolation.
@@ -53,7 +53,7 @@ Running the Pipeline:
 	    python3 Fst_Z-score_transformer.py --input <pathway_to_fst_file> --output <pathway_to output_folder>
 
 	  Important Notes:
-	    - This program is able to handle .fst files with more than two pools of data. If there are more than two pools present, more than one      output file will be produced. Each file will contain Fst and Z-score data for a singular comparison.  
+	    - This program is able to handle .fst files with more than two pools of data. If there are more than two pools present, more 		than one output file will be produced. Each file will contain Fst and Z-score data for a singular comparison.  
 	    - In reference to the output files produced, “1_to_2” indicates the “1:2” comparison. This rule is consistent for all output files.  
 
 __________________________________________________________________________________________________________________________________________

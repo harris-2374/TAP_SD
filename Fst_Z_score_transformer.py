@@ -7,7 +7,6 @@ import csv
 import argparse
 
 # ----------------------------------------------------------------------------------------------------------------------
-# ArgParse #
 
 parser = argparse.ArgumentParser(description="Takes in a .fst file, performs Z-score transformation, and provides "
                                              "interactive distribution plot of Z-score data.")
@@ -15,8 +14,6 @@ parser.add_argument('-I', '--input', required=True, help='Please indicate the pa
 parser.add_argument('-o', '--output', required=True, help="Indicate pathway to output location")
 args = parser.parse_args()
 
-
-# ----------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------------
 
 
@@ -111,10 +108,7 @@ def maincall_output_mult(input4, output4):
 # ----------------------------------------------------------------------------------------------------------------------
 
     zscore_plot = PlotCall()  #Next steps create distribution plot of all Z-scores.
-
-
     zscore_plot.sort()
-
     zmean = np.mean(zscore_plot)
     zstand = np.std(zscore_plot)
     pdf = stats.norm.pdf(zscore_plot, zmean, zstand)
@@ -123,8 +117,6 @@ def maincall_output_mult(input4, output4):
     plt.show()
 
 # ----------------------------------------------------------------------------------------------------------------------
-# ----------------------------------------------------------------------------------------------------------------------
-
 
 def maincall2(input3, output3):
 
@@ -135,21 +127,15 @@ def maincall2(input3, output3):
         name_holder = []
         tag_hold = []
         file_list = list(file_read)
-        # print(list(file_read))
         name_holder = file_list[5:]
         for i2 in name_holder:
             tag_hold.append(i2[0:3])
             continue
-        # print(name_holder)
-        # print(tag_hold)
-
         for j in tag_hold:
             temp_hold = 'Fst_' + j
             names1.append(temp_hold)
             continue
-
         break
-
     file_read = [] #Empty memory of temp table.
     new_read = pd.read_csv(input3, sep='\t', names=names1)
     file_df = pd.DataFrame(data=new_read)
@@ -160,7 +146,6 @@ def maincall2(input3, output3):
         tag_holder1 = tag_hold[(i4-5)] # Ignore warning, 'tag_hold' is made during data processing.
         out_fix = output3 + '/Comparison_' + str(tag_holder1[0]) + '-' + 'to' + '-' + str(tag_holder1[2]) + '_Zscores.bed'
         maincall_output_mult(file_df[['Chromo', 'Position', '3', '4', 'dd', str(place)]], out_fix)
-
     return
 
 

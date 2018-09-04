@@ -56,7 +56,7 @@ Running the Pipeline:
 	    - This program is able to handle .fst files with more than two pools of data. If there are more than two pools present, more than one      output file will be produced. Each file will contain Fst and Z-score data for a singular comparison.  
 	    - In reference to the output files produced, “1_to_2” indicates the “1:2” comparison. This rule is consistent for all output files.  
 
-
+__________________________________________________________________________________________________________________________________________
 
 	Up Down Stream Gene Identification:
 
@@ -76,7 +76,7 @@ Running the Pipeline:
 	    - Ensure that the Chromosome names are identical to the names of the reference file. 
 	    - In reference to the output files produced, “1_to_2” indicates the “1:2” Fst comparison. This rule is consistent for all output files      created.
 
-
+__________________________________________________________________________________________________________________________________________
 
 	Truncated Region Creator:
 	  Summary:
@@ -90,7 +90,7 @@ Running the Pipeline:
 	  Example:
 	    python3 Truncated_Region_Creator.py --input <pathway_to_fst_file> --output <pathway_to_output_folder> --step <numerical_step_value>
 
-
+__________________________________________________________________________________________________________________________________________
 
 	Annotated VCF Separator:
 
@@ -122,7 +122,7 @@ Extra Scripts:
 	  Example:
 	      python3 Genotype_Expander.py --input <pathway_to_fst_file> --output <pathway_to_output_file> --ploidy <ploidy_of_samples>
 
-
+__________________________________________________________________________________________________________________________________________
 
 	Allele Frequency and Z-score Interactive Plot:
 
@@ -144,7 +144,7 @@ Extra Scripts:
 	    - Due to the large size of most data sets, the graphs may take a few minutes to load. 
     
     
-    
+   _________________________________________________________________________________________________________________________________________
     
     Contributors:
     	- Brian W. Davis, Ph.D.

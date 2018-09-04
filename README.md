@@ -24,7 +24,7 @@ ________________________________________________________________________________
 
 This toolset picks up after the creation of .bam files. For the creation of this toolset, .bam files were created using SpeedSeq, but any alignment program that creates .bam files should work. 
 
-The pipeline is designed so the output of one program acts as part of the input of the next program. ** Refer to the usage section for the additional requirements for each program. **
+The pipeline is designed so the output of one program acts as part of the input of the next program.
 
 __________________________________________________________________________________________________________________________________________
 Implementation:

@@ -143,3 +143,9 @@ Allele Frequency and Z-score Interactive Plot:
   Important Notes:
     - This program loads one chromosome at a time, to continue to the next chromosome, you must close the current window. 
     - Due to the large size of most data sets, the graphs may take a few minutes to load. 
+    
+    
+    
+    
+    Contributors:
+    	- Brian W. Davis, Ph.D.

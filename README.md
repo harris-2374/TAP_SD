@@ -61,7 +61,7 @@ ________________________________________________________________________________
 	Up Down Stream Gene Identification:
 
 	  Summary:
-	    - This program determines if a given window, with a transformed Z-score above a given threshold, is within a gene. It also indicates        the closest up and down stream gene, with the distance from each. This is based off the organisms reference (.gff/.gtf) file.
+	    - This program determines if a given window, with a transformed Z-score above a given threshold, is within a gene. It also indicates the closest up and down stream gene, with the distance from each. This is based off the organisms reference (.gff/.gtf) file.
 
 	  Command Line Requirements:
 	     - Input: (-I) (--input) - (.bed) file created by Fst Z-score transformer.py.
@@ -74,13 +74,13 @@ ________________________________________________________________________________
 
 	  Important Notes:
 	    - Ensure that the Chromosome names are identical to the names of the reference file. 
-	    - In reference to the output files produced, “1_to_2” indicates the “1:2” Fst comparison. This rule is consistent for all output files      created.
+	    - In reference to the output files produced, “1_to_2” indicates the “1:2” Fst comparison. This rule is consistent for all output files created.
 
 __________________________________________________________________________________________________________________________________________
 
 	Truncated Region Creator:
 	  Summary:
-	    - Utilizing the output text file of Up_Down_Stream_Gene_Identification.py, the truncated region creator will produce a new tab              delimited file that contains regions of continuous window reads of Z-score data above the indicated threshold. This file is best used      in Excel as an organization tool when beginning your analysis of genes of interest. 
+	    - Utilizing the output text file of Up_Down_Stream_Gene_Identification.py, the truncated region creator will produce a new tab              delimited file that contains regions of continuous window reads of Z-score data above the indicated threshold. This file is best used in Excel as an organization tool when beginning your analysis of genes of interest. 
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) - (.txt) file created by Up_Down_Stream_Gene_Identification.py.
@@ -95,7 +95,7 @@ ________________________________________________________________________________
 	Annotated VCF Separator:
 
 	  Summary:
-	    - Takes annotated VCF file and pulls variants in regions of interest, then separates them into mis-sense mutations and HIGH effect          mutations into one file, and the rest of the variants within the given region into another file. These will be separated into              “WANTED” (mis-sense and HIGH variants) and “OTHER” (all other variants) folders found in the main “OUTPUT” folder. 
+	    - Takes annotated VCF file and pulls variants in regions of interest, then separates them into mis-sense mutations and HIGH effect mutations into one file, and the rest of the variants within the given region into another file. These will be separated into “WANTED” (mis-sense and HIGH variants) and “OTHER” (all other variants) folders found in the main “OUTPUT” folder. 
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) – Pathway to annotated .vcf file.

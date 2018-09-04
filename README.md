@@ -32,12 +32,6 @@ Implementation:
 - This toolset is implemented in Python, utilizing: Popoolation, CRISP, GATK, and SnpEff. 
 __________________________________________________________________________________________________________________________________________
 
-USAGE:
-
-- First thing to do is obtain sorted BAM files from your favorite aligner (SpeedSeq, BWA, etc.) and generate sorted BAM files for each pool of data. Once you have obtained the BAM files, ensure that Popoolation, CRISP, SnpEff, and GATK (if you have any individual data sets) installed on your machine. 
-__________________________________________________________________________________________________________________________________________
-
-
 Running the Pipeline:
 
 

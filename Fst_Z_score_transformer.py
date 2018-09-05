@@ -32,7 +32,6 @@ def maincall_output_mult(input4, output4):
         total = 0
         for value in x:
             total += float(value)
-
         return total*1.0/len(x)
 
     def popstand(x):  #Calculate Population Standard Deviation
@@ -55,7 +54,6 @@ def maincall_output_mult(input4, output4):
                 score_list.append('na')
             else:
                 score_list.append(zscores(g[4:], popumean, popustand))
-
         return score_list
 
     def PlotCall():
@@ -65,7 +63,6 @@ def maincall_output_mult(input4, output4):
                 continue
             else:
                 score_list.append(zscores(g[4:], popumean, popustand))
-
         return score_list
 
     popumean = popmean(fst_list)
@@ -80,10 +77,8 @@ def maincall_output_mult(input4, output4):
     FSTSCORE = ["Fst_Score", ]
     Z_score = MainCall()
     Z_scoretitle = ['Z-score', ]
-
     for score in DSLDcsv[name_of_fst]:
         FSTSCORE.append(score[4:])
-
     for name in DSLDcsv[str((list(DSLDcsv)[0]))]:
         Chromo_list.append(name)
 
@@ -91,10 +86,7 @@ def maincall_output_mult(input4, output4):
         Chromo_pos.append(pos)
     for tit in Z_score:
         Z_scoretitle.append(tit)
-
     zip(Chromo_list, Chromo_pos, FSTSCORE, Z_scoretitle)
-
-
     output_new = output4
 
     if '.bed' not in output_new:
@@ -117,6 +109,8 @@ def maincall_output_mult(input4, output4):
     plt.show()
 
 # ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+
 
 def maincall2(input3, output3):
 

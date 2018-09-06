@@ -7,7 +7,7 @@ ________________________________________________________________________________
 
 Introduction
 
-	The purpose of this toolset is to aid in the analysis of pooled sequenced data, and to provide a set of tools that will enable the user to better organize their research of genetic variation. The toolset is divided into two parts: a pipeline for variant analysis, and several scripts that are useful outside of the pipeline. This toolset is intended to be used in conjunction with CRISP, GATK, and Popoolation2.0. 
+	The purpose of this toolset is to aid in the analysis of pooled sequenced data, and to provide a set of tools that will enable the user to better organize their research of genetic variation. The toolset is divided into two parts: a pipeline for variant analysis, and several scripts that are useful outside of the pipeline. This toolset is intended to be used in conjunction with CRISP, GATK, and Popoolation. 
 
 __________________________________________________________________________________________________________________________________________
 

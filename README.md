@@ -21,7 +21,6 @@ Required Modules
 - pybedtools
 - itertools
 - PyVCF
-- openpyxl
 __________________________________________________________________________________________________________________________________________
 
 This toolset picks up after the creation of .bam files. For the creation of this toolset, .bam files were created using SpeedSeq, but any alignment program that creates .bam files should work. 

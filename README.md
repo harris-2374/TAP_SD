@@ -79,7 +79,7 @@ ________________________________________________________________________________
 
 	  Command Line Requirements:
 	    - Input: (-I) (--input) - (.txt) file created by Up_Down_Stream_Gene_Identification.py.
-	    - Output: (-o) (--output) - Pathway to output file location - indicate file name too. 
+	    - Output: (-o) (--output) - Pathway to output file location - indicate file name, but not file format. (i.e. '.txt') 
 	    - Step: (-s) (--step) – Step size used to create Fst calculations in Popoolation. (i.e. 1000)
 
 	  Example:

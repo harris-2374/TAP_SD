@@ -1,9 +1,8 @@
-import pybedtools
 import pandas as pd
 import csv
 import itertools
 import argparse
-import time
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Argparse #
@@ -21,34 +20,51 @@ args = parser.parse_args()
 def main_call(input1, output1, ref1, thresh1):
     total_windows = 0
     gff_reader = pd.read_csv(ref1, sep='\t', engine='python', names=['Chromosome', 'Feature', 'Type', 'Start', 'End', 'Score', 'Strand', 'Frame', 'Attribute'])
-    print(list(gff_reader))
+    # print(list(gff_reader))
     gff_dataframe = pd.DataFrame(data=gff_reader)
-    print(gff_dataframe.head(10))
+    # print(gff_dataframe.head(10))
+    # print(gff_dataframe['Attribute'].head(20))
     gff_dataframe_cut = gff_dataframe
 
-    def genelist(line):
+
+
+    def genelist(attributes):
         '''
-        :param line: list of attributes for each entry
+        :param attributes: list of attributes for each entry
         :return: list containing the gene for each entry
         '''
         tag = 'gene='
+        tag2 = 'gene_name'
         gene_list = []
-        for i2 in line:
-            split_line = str(i2)
-            need = split_line.split(';')
-            if tag in str(i2):
-                for j in need:
-                    if tag in j:
-                        gene_list.append(j)
-                    else:
-                        continue
-            else:
-                gene_list.append('N/A')
+        if ref1[-3:] == 'gff':
+            for current_information in attributes:
+                split_line = str(current_information)
+                need = split_line.split(';')
+                if tag in str(current_information):
+                    for current_needed in need:
+                        if tag in current_needed:
+                            gene_list.append(current_needed)
+                        else:
+                            continue
+                else:
+                    gene_list.append('N/A')
+        elif ref1[-3:] == 'gtf':
+            for current_information in attributes:
+                split_line = str(current_information)
+                need = split_line.split(';')
+                if tag2 in str(current_information):
+                    for current_needed in need:
+                        if tag2 in current_needed:
+                            gene_list.append(current_needed.strip('gene_name ').strip('"'))
+                        else:
+                            continue
+                else:
+                    gene_list.append('N/A')
         return gene_list
+
 
     def mastergenelist():
         """
-        
         :return: List of lists containing Chromosome, Start, Stop, and Gene positional data.
         """
         gene_list = list(genelist(gff_dataframe_cut['Attribute']))
@@ -71,8 +87,8 @@ def main_call(input1, output1, ref1, thresh1):
         return mastergenefile2
 
     mastergenefile = mastergenelist() #variable for recursive calling
-    x = pybedtools.example_bedtool(input1) #Open data bed file
-    df = pd.read_table(x.fn, low_memory=False)
+    df = pd.read_table(input1, low_memory=False)
+
 
     def gatherinterest(pos, cutoff):
         '''
@@ -82,12 +98,12 @@ def main_call(input1, output1, ref1, thresh1):
         :return: list of SNP's above threshold
         '''
         sampofint = []
-        for interes in enumerate(pos):
-            if interes[1] == 'na':
+        for current_interest in enumerate(pos):
+            if current_interest[1] == 'na':
                 continue
             else:
-                if float(interes[1]) >= cutoff:
-                    sampofint.append(interes)
+                if float(current_interest[1]) >= cutoff:
+                    sampofint.append(current_interest)
                 else:
                     continue
         return sampofint
@@ -109,7 +125,6 @@ def main_call(input1, output1, ref1, thresh1):
                 temp.append(df.iloc[val3[0]]['Fst_Score'])
                 fststartstop_list.append(temp)
                 continue
-
         return fststartstop_list
 
     def downstreamV2(window1, gene_master):
@@ -124,7 +139,6 @@ def main_call(input1, output1, ref1, thresh1):
         for genemst in gene_master[1:]:
             if "N/A" in genemst:
                 continue
-
             else:
                 try:
                     current = genemst
@@ -132,7 +146,6 @@ def main_call(input1, output1, ref1, thresh1):
                     currchrom = current[0]
                     if snpchrom == currchrom:
                         if window1[1] > genemst[2]:
-                            # print(current)
                             if int(current[2]) > int(winner[2]):
                                 winner = current
                                 continue
@@ -143,9 +156,7 @@ def main_call(input1, output1, ref1, thresh1):
                     else:
                         continue
                 except IndexError:
-                    # print('IndexError Downstream',genemst)
-                    continue
-
+                    raise IndexError
         return winner
 
     def upstreamV2(window2, gene_master):
@@ -174,9 +185,7 @@ def main_call(input1, output1, ref1, thresh1):
                     else:
                         continue
                 except IndexError:
-                    # print('Index Error Upstream', genemst)
-                    continue
-
+                    raise IndexError
         return winner
 
     def withingene(window3, mstr):
@@ -195,7 +204,7 @@ def main_call(input1, output1, ref1, thresh1):
     thresh = float(thresh1)
     snp_of_interest = fststartstop(gatherinterest(df['Z-score'], thresh))
 # ----------------------------------------------------------------------------------------------------------------------
-    ## Gathering all information for output file creation ##
+    ## Gathering all current_information for output file creation ##
     Chromosome_final_list = ['Chromosome', ]
     Position_final_list = ['SNP_Pos.', ]
     within_final_list = ['Within_gene', ]
@@ -205,6 +214,8 @@ def main_call(input1, output1, ref1, thresh1):
     upstream_final_list = ['Upstream Gene', ]
     fst_final = ['Fst_score', ]
     z_score_final = ['Z-score', ]
+
+
 
     for i in snp_of_interest:
         Chromosome_final_list.append(i[0])

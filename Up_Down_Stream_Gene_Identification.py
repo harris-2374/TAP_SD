@@ -20,13 +20,8 @@ args = parser.parse_args()
 def main_call(input1, output1, ref1, thresh1):
     total_windows = 0
     gff_reader = pd.read_csv(ref1, sep='\t', engine='python', names=['Chromosome', 'Feature', 'Type', 'Start', 'End', 'Score', 'Strand', 'Frame', 'Attribute'])
-    # print(list(gff_reader))
     gff_dataframe = pd.DataFrame(data=gff_reader)
-    # print(gff_dataframe.head(10))
-    # print(gff_dataframe['Attribute'].head(20))
     gff_dataframe_cut = gff_dataframe
-
-
 
     def genelist(attributes):
         '''
@@ -214,8 +209,6 @@ def main_call(input1, output1, ref1, thresh1):
     upstream_final_list = ['Upstream Gene', ]
     fst_final = ['Fst_score', ]
     z_score_final = ['Z-score', ]
-
-
 
     for i in snp_of_interest:
         Chromosome_final_list.append(i[0])

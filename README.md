@@ -18,7 +18,6 @@ Required Modules
 - scipy
 - csv
 - argparse 
-- pybedtools
 - itertools
 - PyVCF
 __________________________________________________________________________________________________________________________________________
@@ -99,6 +98,9 @@ ________________________________________________________________________________
 
 	  Example:
 	    python3 Annotated_Variant_Separator.py --input <pathway_to_fst_file> --output <pathway_to_output_folder> --region <pathway_to_region_file>
+	    
+	    Important Notes:
+	    	- Ensure that the annotated variant VCF file is bgzipped, and then indexed using tabix. This is ESSENTIAL to properly run this program. Not doing this step will throw errors.
 
 __________________________________________________________________________________________________________________________________________
 

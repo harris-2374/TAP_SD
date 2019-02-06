@@ -141,7 +141,14 @@ ________________________________________________________________________________
 	    - Due to the large size of most data sets, the graphs may take a few minutes to load. 
     
     
-   _________________________________________________________________________________________________________________________________________
+   __________________________________________________________________________________________________________________________________________
     
     Contributors:
     	- Brian W. Davis, Ph.D. - Texas A&M College of Veterinary Medicine and Biomedical Science
+	
+__________________________________________________________________________________________________________________________________________	
+	
+    Needed Programs:
+	- Kofler,R.,Vinay Pandey, R. & Schloetterer, C PoPoolation2: Identifying differentiation between populations using sequencing of pooled DNA samples (Pool-Seq); Bioinformatics; Vol. 27 no. 24 2011, pages 3435–3436; http://bioinformatics.oxfordjournals.org/content/27/24/3435 (https://sourceforge.net/p/popoolation2/wiki/Home/)
+	- A statistical method for the detection of variants from next-generation resequencing of DNA pools, V. Bansal. Bioinformatics 26(12), 2010 (https://github.com/vibansal/crisp)
+	- Poplin et al. 2017 : Detailed description of HaplotypeCaller; best reference for germline joint calling (https://software.broadinstitute.org/gatk/)
